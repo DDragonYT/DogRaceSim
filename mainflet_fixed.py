@@ -3,7 +3,7 @@ import json
 from random import randint
 from time import sleep
 
-info_json = json.load(open("DogRaceSim/assets/data.json","rb"))
+info_json = json.load(open("assets/data.json","rb"))
 names = info_json['names']
 colors = info_json['colors']
 color_emojis = info_json['color_emojis']
@@ -108,7 +108,7 @@ def main(page: ft.Page):
         )
         for dog in dog_list:
             dog_control_list.content.controls.append(
-                ft.Image('DogRaceSim/assets/dog_png.png',left=dog['position']*position_spacing,top=dog['id']*dog_spacing,scale=0.3,animate_position=animation_timing)
+                ft.Image('assets/dog_png.png',left=dog['position']*position_spacing,top=dog['id']*dog_spacing,scale=0.3,animate_position=animation_timing)
             )
         for dog in dog_list:
             dog_control_list.content.controls.append(
@@ -169,7 +169,7 @@ def main(page: ft.Page):
 # Output text prepared
             dog_positions_control.content.value = race_positions_text
             page.update()
-            sleep(1/dog_speed)
+            sleep(1/int(dog_speed))
         sleep(animation_timing/1000)
         bottom_row.controls.append(ft.Button("Next race 🏳️",on_click=main_menu))
         countdown.controls[0].value = f"{"\n"*10}{gen_winner_text()}{"\n"*10}"
